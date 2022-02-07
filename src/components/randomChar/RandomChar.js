@@ -7,12 +7,8 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 
-class RandomChar extends Component{
-    constructor(props){
-        super();
-        // BAD PRACTISE WILL BE FIXED LATER
-        this.updateChar();
-    }    
+class RandomChar extends Component{ 
+
     state = {
         char:{},
         loading: true,
@@ -20,6 +16,16 @@ class RandomChar extends Component{
     };
 
     marvelService = new MarvelService();
+
+    componentDidMount(){
+        // console.log('Mount');
+        this.updateChar();
+    }
+
+    componentWillUnmount(){
+        // console.log('Unmount');
+        // clearInterval(this.timerId);
+    }
 
     onCharLoaded = (char)=>{
         this.setState({
@@ -45,6 +51,7 @@ class RandomChar extends Component{
 
 
     render(){
+        console.log('Render');
         const {char, loading, error} = this.state;
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
