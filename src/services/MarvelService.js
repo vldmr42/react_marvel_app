@@ -25,13 +25,14 @@ class MarvelService {
     }
     
     _transformCharacter = (char)=>{
-        char.description = char.description ? char.description : 'No description.'
+        char.description = char.description ? char.description : 'No description available for this character.'
         return{
             name: char.name,
-            description: char.description.length > 100 ? char.description.substring(0, 100) + '...' : 'No description.',
+            description: char.description.length > 200 ? char.description.substring(0, 200) + '...' : 'No description.',
             thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
             homepage: char.urls[0].url,
-            wiki: char.urls[1].url
+            wiki: char.urls[1].url,
+            comics: char.comics.items,
         }
     }
 }
