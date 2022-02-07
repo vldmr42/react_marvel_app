@@ -18,14 +18,13 @@ class RandomChar extends Component{
     marvelService = new MarvelService();
 
     componentDidMount(){
-        // console.log('Mount');
         this.updateChar();
     }
 
-    componentWillUnmount(){
-        // console.log('Unmount');
-        // clearInterval(this.timerId);
-    }
+    // componentWillUnmount(){
+    //     // console.log('Unmount');
+    //     // clearInterval(this.timerId);
+    // }
 
     onCharLoaded = (char)=>{
         this.setState({
@@ -58,7 +57,6 @@ class RandomChar extends Component{
 
 
     render(){
-        console.log('Render');
         const {char, loading, error} = this.state;
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
