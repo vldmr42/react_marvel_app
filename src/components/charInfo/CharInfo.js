@@ -7,8 +7,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
 
 import './charInfo.scss';
-import thor from '../../resources/img/thor.jpeg';
-
 class CharInfo extends Component {
 
     state = {
@@ -113,8 +111,8 @@ const View = ({char})=>{
                 <ul className="char__comics-list">
                     {comics.length > 0 ? null : 'There is no comics with this character'}
                     {
-                        comics.map((item, i)=>{
-                            if (i > 9) return;
+                        comics.slice(10).map((item, i)=>{
+                            // if (i > 9) return;
                             return (
                                 <li key={i} className="char__comics-item">
                                     {item.name}
